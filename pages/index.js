@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { Heading } from "../src/components/LayoutComponents";
-import PriceSlider from "../src/components/PriceSlider";
+import Filter from "../src/components/Filter/index";
 
 const Home = () => {
   return (
     <>
       <PageWrapper>
         <Heading>Сaravans reservation</Heading>
-        <PriceSlider />
+        <Filter />
       </PageWrapper>
     </>
   );

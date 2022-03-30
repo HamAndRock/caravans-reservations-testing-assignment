@@ -17,10 +17,7 @@ a {
   box-sizing: border-box;
 }
 
-.ant-slider-mark-text-active {
-  color: white;
-}
-
-.ant-slider-mark-text {
+.ant-checkbox-wrapper,
+.ant-slider-mark-text .ant-slider-mark-text-active {
   color: white;
 }
