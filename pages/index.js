@@ -16,11 +16,8 @@ const Home = () => {
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
   align-items: center;
-  align-content: space-around;
-  // color: white;
+  color: white !importnat;
 `;
 
 export default Home;
