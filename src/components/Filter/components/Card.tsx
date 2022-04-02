@@ -6,7 +6,7 @@ interface TypesCard {
   title: string;
 }
 
-const TypesCard = (props) => {
+const TypesCard = (props: TypesCard) => {
   const [allSelectedTypes, setAllSelectedTypes] = useState<Array<string>>([]);
   const [stylesForSelectedType, setStylesForSelectedType] = useState<Object>(
     {}

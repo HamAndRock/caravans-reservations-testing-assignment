@@ -4,7 +4,7 @@ import styled from "styled-components";
 const LogoStyled = styled.div`
   padding: 23px 0;
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 0 100px;
 `;
 
 const Logo = () => {

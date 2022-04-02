@@ -6,6 +6,8 @@ const PriceSliderStyled = styled.div`
   flex-direction: column;
   max-width: 344px;
   width: 100%;
+  border-right: 1px solid #edeae3
+  padding: 0px 16px;
 `;
 
 export const Label = styled.div`
