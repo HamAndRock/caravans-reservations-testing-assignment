@@ -1,23 +1,30 @@
 import styled from "styled-components";
-import CaravanTypesCheckbox from "./components/CaravanTypesCheckbox";
-import ImidiateReservationSwitch from "./components/ImidiateReservationSwitch";
+import CaravanTypes from "./components/CaravanTypes";
+import ImidiateReservation from "./components/ImidiateReservation";
 import PriceSlider from "./components/PriceSlider";
 
 const FilterStyled = styled.div`
-  background-color: #4f0036;
-  border-radius: 8px;
-  border-style: solid;
-  border-width: 15px;
-  border-color: #610d46;
-  align-items: center;
+  border-top: 1px solid #cfcfcf;
+  border-bottom: 1px solid #cfcfcf;
+  padding: 23px 0;
+  margin: 0 auto;
+`;
+
+const FilterStyled2 = styled.div`
+  display: flex;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const Filter = () => {
   return (
     <FilterStyled>
-      <PriceSlider />
-      <CaravanTypesCheckbox />
-      <ImidiateReservationSwitch />
+      <FilterStyled2>
+        <PriceSlider />
+        <CaravanTypes />
+        <ImidiateReservation />
+      </FilterStyled2>
     </FilterStyled>
   );
 };

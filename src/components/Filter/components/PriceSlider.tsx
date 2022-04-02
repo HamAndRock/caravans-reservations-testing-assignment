@@ -3,33 +3,26 @@ import { InputNumber, Slider } from "antd";
 import { useState } from "react";
 
 const PriceSliderStyled = styled.div`
-  display: flex;
-  margin: 20px 20px 12px;
   flex-direction: column;
+  max-width: 344px;
+  width: 100%;
 `;
 
 export const Label = styled.div`
   flex-wrap: nowrap;
   font-size: 18px;
-  margin-right: 16px;
+  color: #a9a9a9;
+  margin-bottom: 16px;
 `;
 
-const InputNumberStyled = styled(InputNumber as any)`
-  margin: 8px;
-  width: auto;
+const InputNumberStyled = styled.div`
+  margin-top: 26px;
+  display: flex;
 `;
 
 const SliderStyled = styled(Slider as any)`
-  width: 100%;
-  margin: 8px;
-`;
-
-const SliderParts = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 8px;
-  width: 80%;
-  align-self: start;
+  margin-top: 26px;
+  color: green;
 `;
 
 const PriceSlider = () => {
@@ -57,35 +50,41 @@ const PriceSlider = () => {
 
   return (
     <PriceSliderStyled>
-      <Label>Price:</Label>
-      <SliderParts>
-        <InputNumberStyled
+      <Label>Cena za den</Label>
+      <SliderStyled
+        range
+        min={min}
+        max={max}
+        step={step}
+        onChange={onChange}
+        value={[minInputValue, maxInputValue]}
+        trackStyle={{ "background-color": "#119383" }}
+        handleStyle={{
+          "background-color": "#119383",
+          border: "#119383",
+        }}
+      />
+      <InputNumberStyled>
+        <InputNumber
+          style={{ width: "50%", maxWidth: "156px", marginRight: "16px" }}
           min={min}
           max={max}
-          step={step}
           value={minInputValue}
           defaultValue={min}
           onChange={onChangeMinInputNumber}
-          size={"small"}
+          addonAfter="Kč"
         />
-        <SliderStyled
-          range
-          min={min}
-          max={max}
-          step={step}
-          onChange={onChange}
-          value={[minInputValue, maxInputValue]}
-        />
-        <InputNumberStyled
+        <InputNumber
+          style={{ width: "50%", maxWidth: "156px" }}
           min={min}
           max={max}
           step={step}
           value={maxInputValue}
           defaultValue={max}
           onChange={onChangeMaxInputNumber}
-          size={"small"}
+          addonAfter="Kč"
         />
-      </SliderParts>
+      </InputNumberStyled>
     </PriceSliderStyled>
   );
 };

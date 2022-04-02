@@ -4,8 +4,12 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #20265e;
-  color: white;
+  /* margin-left: 80%; */
+}
+
+#__next {
+  /* max-width: 1440px; */
+  margin: 0 auto;
 }
 
 a {
@@ -15,9 +19,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.ant-checkbox-wrapper,
-.ant-slider-mark-text .ant-slider-mark-text-active {
-  color: white;
 }
