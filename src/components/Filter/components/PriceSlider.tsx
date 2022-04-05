@@ -1,92 +1,91 @@
 import styled from "styled-components";
-import { InputNumber, Slider } from "antd";
-import { useState } from "react";
+import { Input, Slider } from "antd";
+import { useCallback, useContext } from "react";
+import FilterContext from "../../../store/FilterContext";
+import { colors, maxPrice, minPrice, priceStep } from "../../../constants";
 
 const PriceSliderStyled = styled.div`
-  flex-direction: column;
-  max-width: 344px;
+  max-width: 328px;
   width: 100%;
-  border-right: 1px solid #edeae3
-  padding: 0px 16px;
 `;
 
 export const Label = styled.div`
-  flex-wrap: nowrap;
-  font-size: 18px;
-  color: #a9a9a9;
   margin-bottom: 16px;
+  font-size: 16px;
+  color: ${colors.grayLabel};
 `;
 
-const InputNumberStyled = styled.div`
+const InputGroupStyled = styled.div`
   margin-top: 26px;
   display: flex;
+  gap: 16px;
 `;
 
 const SliderStyled = styled(Slider as any)`
   margin-top: 26px;
-  color: green;
 `;
 
 const PriceSlider = () => {
-  const min = 500;
-  const max = 5000;
-  const step = 500;
+  const {
+    filterPriceMin,
+    setFilterPriceMin,
+    filterPriceMax,
+    setFilterPriceMax,
+  } = useContext(FilterContext);
 
-  const [minInputValue, setMinInputValue] = useState(500);
-  const [maxInputValue, setMaxInputValue] = useState(5000);
-
-  const onChange = (value: any) => {
-    if (value) {
-      setMinInputValue(value[0]);
-      setMaxInputValue(value[1]);
-    }
+  const onChange = (value: Array<number>) => {
+    setFilterPriceMin(value[0]);
+    setFilterPriceMax(value[1]);
   };
 
-  const onChangeMinInputNumber = (value: any) => {
-    value && setMinInputValue(value);
-  };
+  const onChangeMinInputNumber = useCallback(
+    (e) => {
+      setFilterPriceMin(e.target.value);
+    },
+    [setFilterPriceMin]
+  );
 
-  const onChangeMaxInputNumber = (value: any) => {
-    value && setMaxInputValue(value);
-  };
+  const onChangeMaxInputNumber = useCallback(
+    (e) => {
+      setFilterPriceMax(e.target.value);
+    },
+    [setFilterPriceMax]
+  );
 
   return (
     <PriceSliderStyled>
       <Label>Cena za den</Label>
       <SliderStyled
         range
-        min={min}
-        max={max}
-        step={step}
+        min={minPrice}
+        max={maxPrice}
+        step={priceStep}
         onChange={onChange}
-        value={[minInputValue, maxInputValue]}
-        trackStyle={{ "background-color": "#119383" }}
+        value={[filterPriceMin, filterPriceMax]}
+        trackStyle={{ backgroundColor: colors.green }}
         handleStyle={{
-          "background-color": "#119383",
-          border: "#119383",
+          backgroundColor: colors.green,
+          border: colors.green,
         }}
       />
-      <InputNumberStyled>
-        <InputNumber
-          style={{ width: "50%", maxWidth: "156px", marginRight: "16px" }}
-          min={min}
-          max={max}
-          value={minInputValue}
-          defaultValue={min}
+      <InputGroupStyled>
+        <Input
+          min={minPrice}
+          max={maxPrice}
+          value={filterPriceMin}
           onChange={onChangeMinInputNumber}
           addonAfter="Kč"
+          type="number"
         />
-        <InputNumber
-          style={{ width: "50%", maxWidth: "156px" }}
-          min={min}
-          max={max}
-          step={step}
-          value={maxInputValue}
-          defaultValue={max}
+        <Input
+          min={minPrice}
+          max={maxPrice}
+          value={filterPriceMax}
           onChange={onChangeMaxInputNumber}
           addonAfter="Kč"
+          type="number"
         />
-      </InputNumberStyled>
+      </InputGroupStyled>
     </PriceSliderStyled>
   );
 };

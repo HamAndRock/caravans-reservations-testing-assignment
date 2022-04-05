@@ -24,3 +24,16 @@ a {
 .ant-card-body {
   padding: 16px;
 }
+
+.ant-input-number-handler-wrap {
+  visibility: hidden;
+  display: none;
+}
+
+.ant-card-body {
+  padding: 11px 12px 10px 8px;
+}
+
+.ant-card-body {
+  padding: 11px 12px 10px 8px;
+}

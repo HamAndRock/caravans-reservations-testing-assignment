@@ -2,9 +2,14 @@ import { Image } from "antd";
 import styled from "styled-components";
 
 const LogoStyled = styled.div`
-  padding: 23px 0;
+  padding: 22px 0;
   max-width: 1440px;
-  margin: 0 100px;
+  margin: 0 7%;
+
+  @media (max-width: 500px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const Logo = () => {

@@ -1,18 +1,20 @@
 import { Card, Image } from "antd";
 import styled from "styled-components";
+import { colors } from "../../../constants";
 
 const CardStyled = styled(Card as any)`
   border: 1px solid #edeae3;
   border-radius: 8px;
-  margin-bottom: 32px;
+  max-width: 392px;
+  min-width: 343px;
+  width: 100%;
 `;
 
 const TitlePart = styled.div`
   border-bottom: 1px solid #edeae3;
 `;
 
-const CaravanType = styled.div`
-  letter-spacing: 1px;
+const CaravanTypeTitle = styled.div`
   color: #ff5e55;
   text-transform: uppercase;
   font-weight: bold;
@@ -38,19 +40,17 @@ const MiddlePartText = styled.div`
   padding-bottom: 9px;
 `;
 
-const ImageTextGroup = styled.div`
-  padding-right: 12px;
-`;
-
-const ImagesGroup = styled.div`
+const IconsGroup = styled.div`
   display: flex;
+  flex-direction: row;
+  gap: 10px;
 `;
 
 const PricePart = styled.div`
-  font-size: 16px;
   display: flex;
   justify-content: space-between;
   padding-top: 12px;
+  font-size: 16px;
 `;
 
 const Price = styled.div`
@@ -58,7 +58,7 @@ const Price = styled.div`
 `;
 
 const PriceTitle = styled.div`
-  color: #9c8c8c;
+  color: ${colors.cardText};
 `;
 
 export interface CaravanCardProps {
@@ -79,38 +79,32 @@ const CaravanCard = (props: CaravanCardProps) => {
     <CardStyled
       style={{ width: 392 }}
       cover={
-        <Image width={392} height={190} alt="example" src={props.pictures[0]} />
+        <Image
+          style={{
+            maxWidth: "392px",
+            minWidth: "344px;",
+            width: "100%",
+            objectFit: "cover",
+          }}
+          height={190}
+          alt="example"
+          src={props.pictures[0]}
+        />
       }
     >
       <TitlePart>
-        <CaravanType>{props.vehicleType}</CaravanType>
+        <CaravanTypeTitle>{props.vehicleType}</CaravanTypeTitle>
         <CardTitle>{props.name}</CardTitle>
       </TitlePart>
       <MiddlePart>
         <MiddlePartText>{props.location}</MiddlePartText>
-        <ImagesGroup>
-          <ImageTextGroup>
-            <Image src="../Icon-Seat.svg" alt="Icon Seat" />
-            {props.passengersCapacity}
-          </ImageTextGroup>
-          <ImageTextGroup>
-            <Image src="../Icon-Bed.svg" alt="Icon Bed" /> {props.sleepCapacity}
-          </ImageTextGroup>
-          {props.shower && (
-            <Image
-              style={{ paddingRight: "12px" }}
-              src="../Icon-Shower.svg"
-              alt="Icon Shower"
-            />
-          )}
-          {props.toilet && (
-            <Image
-              style={{ paddingRight: "12px" }}
-              src="../Icon-Toilet.svg"
-              alt="Icon Toilet"
-            />
-          )}
-        </ImagesGroup>
+        <IconsGroup>
+          <Image src="../Icon-Seat.svg" alt="Icon Seat" />
+          {props.passengersCapacity}
+          <Image src="../Icon-Bed.svg" alt="Icon Bed" /> {props.sleepCapacity}
+          {props.shower && <Image src="../Icon-Shower.svg" alt="Icon Shower" />}
+          {props.toilet && <Image src="../Icon-Toilet.svg" alt="Icon Toilet" />}
+        </IconsGroup>
       </MiddlePart>
       <PricePart>
         <PriceTitle>Cena od</PriceTitle>
